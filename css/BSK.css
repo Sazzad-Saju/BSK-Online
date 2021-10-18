@@ -11,6 +11,7 @@
     color: white;
     overflow: hidden;
     border-top: 3px solid #3777a3;
+    line-height: 1.5em;
 }
 
 .img-logo {
@@ -57,4 +58,55 @@ a:hover {
     border: 2px solid white;
     outline: 2px solid lightgray;
     background-color: #265c80;
+}
+
+.pad {
+    padding-bottom: 2rem;
+}
+
+.sm-pad {
+    padding-bottom: 1.25rem;
+}
+
+.sm-pad-top {
+    padding-top: 1.25rem;
+}
+
+.xsm-pad {
+    padding-bottom: 0.75rem;
+}
+
+.justify-cont {
+    text-align: justify;
+}
+
+.icon i {
+    transition: .5s;
+    -webkit-transition: rotate(-60deg);
+}
+
+.icon i:hover {
+    transition: .5s;
+    transform: rotate(60deg);
+    color: white;
+}
+
+#passErr {
+    display: none;
+}
+
+.correct {
+    border: 2px solid green;
+    color: green;
+}
+
+.wrong {
+    border: 2px solid red;
+    color: red;
+}
+
+.wrong:focus {
+    outline: none;
+    border: 2px solid red;
+    color: red;
 }
