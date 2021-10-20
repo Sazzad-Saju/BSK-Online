@@ -3,6 +3,9 @@ function encrypt(M, keyGen) {
     M = M.split('');
     for (var i = 0; i < M.length; i++) {
         var mv = M[i].charCodeAt();
+        if (mv == 10) {
+            mv = 126;
+        }
         var sk1v = keyGen.subkey1[i].charCodeAt();
         var pos = (mv + sk1v) % 94;
         if (pos < 32) {
