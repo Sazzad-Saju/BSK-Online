@@ -42,10 +42,9 @@ function xmur3(str) {
 }
 
 //KeyGeneration
-function keyGeneration(M, K) {
+function keyGeneration(Mlength, K) {
     let subkey1;
-    //     subkey2 = "shantasajulove";
-    let Mlength = M.length;
+    // let Mlength = M.length;
     let Klength = K.length;
 
     //Text to Int
@@ -70,7 +69,7 @@ function keyGeneration(M, K) {
             add--;
             i++;
         }
-    } else if (Mlength < Klength) {
+    } else {
         Mlength = Klength;
         subkey1 = K;
     }

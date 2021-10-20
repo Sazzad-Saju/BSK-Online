@@ -1,4 +1,5 @@
 function encrypt(M, keyGen) {
+    //subkey1 operation
     M = M.split('');
     for (var i = 0; i < M.length; i++) {
         var mv = M[i].charCodeAt();
@@ -21,12 +22,12 @@ function encrypt(M, keyGen) {
     //key-triggered indexing
     M = M.split('');
     for (var i = M.length - 1; i >= 0; i--) {
-        var t = M[i].charCodeAt();
+        var t = keyGen.subkey2[i].charCodeAt();
         var j = t % M.length;
         [M[i], M[j]] = [M[j], M[i]];
     }
     // M = M.join("").toString();
-    // console.log(M);
+    // console.log(M.join("").toString());
 
     //hexadecimal
     // console.log(rand(), max);
@@ -36,12 +37,17 @@ function encrypt(M, keyGen) {
             if (i % 2 == 0) {
                 var numb = parseInt(rand() * max) % 32;
                 M[i] = numb.toString(16);
+                if (M[i].length != 2) {
+                    M[i] = "0" + M[i];
+                }
+                // console.log(M[i]);
             } else {
                 var numb = parseInt(rand() * max) % 256;
                 if (numb < 126) {
                     numb += 130;
                 }
                 M[i] = numb.toString(16);
+                // console.log(M[i]);
             }
         }
     }

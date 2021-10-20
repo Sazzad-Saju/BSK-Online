@@ -110,3 +110,19 @@ a:hover {
     border: 2px solid red;
     color: red;
 }
+
+.textAreaTitle {
+    display: inline;
+    vertical-align: middle;
+}
+
+.copyButt {
+    display: inline;
+    float: right;
+    vertical-align: middle;
+    /* display: none; */
+}
+
+.padTitleDown {
+    padding-bottom: 20px;
+}

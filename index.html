@@ -45,16 +45,15 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-md-offset-1">
                     <h2 class="diffHeader">No Software Installation</h2>
-                    <!-- <p>Genre: Web Application <br> Language: JavaScript <br> Installation: none <br> Store: none</p>  -->
                     <p class="justify-cont">Encrypting in web browser, using Javascript implementation. Doesn't require any installation. All data stays on your computer, nothing transferred to any servers. Users can also download offline version executive file from <a href="file/BSK Stream Cipher.exe">here</a></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 justify-cont sm-pad">
-                    <p><b>Abstruct: </b>Vigenère cipher is an ancient elementary method that uses a series of Caesar shifting for encrypting plaintext to ciphertext protecting it from adversaries. However, a frequency analysis attack is vulnerable in this
-                        type of cipher technique. This paper aims to enhance the security of the Vigenère cipher in a hybrid cryptosystem using a randomized approach including pseudorandom substitution, rearranging, padding, etc. In this approach, a complex
+                    <p><b>Abstruct: </b>Vigenere cipher is an ancient elementary method that uses a series of Caesar shifting for encrypting plaintext to ciphertext protecting it from adversaries. However, a frequency analysis attack is vulnerable in this
+                        type of cipher technique. This paper aims to enhance the security of the Vigenere cipher in a hybrid cryptosystem using a randomized approach including pseudorandom substitution, rearranging, padding, etc. In this approach, a complex
                         key generation algorithm is used that generates a pair of subkeys from an input key. One of the subkeys, Subkey1 is used to generate an intermediate ciphertext. The other key, Subkey2 is used to further scramble the ciphertext.
-                        The slightest change in the input symmetric key produces an entirely different key pair. Hence, different encrypted results. It also increases the ranges of characters that Vigenère cipher can encrypt by including all ASCII and
+                        The slightest change in the input symmetric key produces an entirely different key pair. Hence, different encrypted results. It also increases the ranges of characters that Vigenere cipher can encrypt by including all ASCII and
                         extended ASCII. Finally, the symmetric key is encrypted with the public key of RSA solving the key distribution problem of the symmetric cipher. This enhanced and modified Vigenère cipher in the hybrid cryptosystem overcomes all
                         limitations of classical cipher and acts as a bridge between classical and modern cryptography.</p>
                 </div>
@@ -62,7 +61,10 @@
             <hr>
             <div class="row pt-4 pad">
                 <div class="col">
-                    <h2 class="diffHeader">Type Plaintext or Ciphertext: </h2>
+                    <div class="padTitleDown">
+                        <h2 class="diffHeader textAreaTitle">Type Plaintext or Ciphertext: </h2>
+                        <a class="copyButt"> </a>
+                    </div>
                     <textarea id="message" name="txt" rows="8" style="width: 100%" class="form-control"></textarea>
                     <label class="pt-3 fs-4">Password: </label>
                     <input type="password" class="form-control" style="width: 100%;" id="pass">
@@ -120,6 +122,7 @@
     </div>
     <script src="js/keyGen.js"></script>
     <script src="js/encrypt.js"></script>
+    <script src="js/decrypt.js"></script>
     <script src="js/BSK.js"></script>
 
 </body>
