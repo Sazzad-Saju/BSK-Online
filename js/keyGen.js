@@ -11,6 +11,16 @@ function replaceAt(str, index, newChar) {
     return str.replace(/./g, replacer);
 }
 
+//swap in string
+function swapStr(str, first, last) {
+    return str.substr(0, first) +
+        str[last] +
+        str.substring(first + 1, last) +
+        str[first] +
+        str.substr(last + 1);
+}
+
+//random number generation
 function mulberry32(a) {
     return function() {
         var t = a += 0x6D2B79F5;
@@ -20,16 +30,6 @@ function mulberry32(a) {
     }
 }
 
-//swap
-function swapStr(str, first, last) {
-    return str.substr(0, first) +
-        str[last] +
-        str.substring(first + 1, last) +
-        str[first] +
-        str.substr(last + 1);
-}
-
-//pseu
 function xmur3(str) {
     for (var i = 0, h = 1779033703 ^ str.length; i < str.length; i++)
         h = Math.imul(h ^ str.charCodeAt(i), 3432918353),
@@ -44,7 +44,6 @@ function xmur3(str) {
 //KeyGeneration
 function keyGeneration(Mlength, K) {
     let subkey1;
-    // let Mlength = M.length;
     let Klength = K.length;
 
     //Text to Int
@@ -55,7 +54,6 @@ function keyGeneration(Mlength, K) {
         grd *= 2;
     }
     countK += Mlength;
-    // console.log(countK);
 
     //Key Enhancement
     if (Mlength > Klength) {
@@ -85,14 +83,11 @@ function keyGeneration(Mlength, K) {
         var repChar = String.fromCharCode(numb);
         subkey1 = replaceAt(subkey1, i, repChar);
     }
-    // console.log(subkey1);
     countK += Mlength;
-    // console.log(countK);
 
     //random-indexing
     var seed = xmur3(subkey1);
     rand = mulberry32(seed());
-    // var max;
     for (var i = 0; i < Mlength; i++) {
         countK = subkey1[i].charCodeAt();
         while (countK > 10) {
@@ -100,7 +95,6 @@ function keyGeneration(Mlength, K) {
         }
         max = Math.pow(10, countK);
         var pos = parseInt(rand() * max) % Mlength;
-        // console.log(pos);
         subkey1 = subkey1.split('');
         var temp = subkey1[i];
         subkey1[i] = subkey1[pos];
@@ -108,7 +102,6 @@ function keyGeneration(Mlength, K) {
         subkey1 = subkey1.join("").toString();
     }
 
-    // console.log(subkey1.length)
     //length enhancement
     var i = 0;
     let subkey2 = subkey1;
@@ -119,7 +112,6 @@ function keyGeneration(Mlength, K) {
 
     //generate subkey2
     var rndNum = parseInt(rand() * max)
-        // console.log(rndNum);
     for (var i = 0; i < subkey2.length; i++) {
         var numb = subkey2[i].charCodeAt();
         rndNum = (numb + rndNum) % 95;
@@ -130,10 +122,6 @@ function keyGeneration(Mlength, K) {
         var repChar = String.fromCharCode(numb);
         subkey2 = replaceAt(subkey2, i, repChar);
     }
-
-    // console.log(subkey2);
-    // console.log(subkey1.length);
-    // console.log(subkey2.length);
 
     return {
         subkey1,

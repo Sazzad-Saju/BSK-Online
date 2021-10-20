@@ -11,26 +11,22 @@ function encrypt(M, keyGen) {
         M[i] = String.fromCharCode(pos);
     }
     M = M.join("").toString();
-    // console.log(M);
 
     //padding
     //length formating
     while (M.length % 8 != 0) {
         M += '~';
     }
-    // console.log(M);
-    //key-triggered indexing
+
+    //key-triggered indexing: subkey2
     M = M.split('');
     for (var i = M.length - 1; i >= 0; i--) {
         var t = keyGen.subkey2[i].charCodeAt();
         var j = t % M.length;
         [M[i], M[j]] = [M[j], M[i]];
     }
-    // M = M.join("").toString();
-    // console.log(M.join("").toString());
 
-    //hexadecimal
-    // console.log(rand(), max);
+    //hexadecimal convertion and dopping
     for (var i = 0; i < M.length; i++) {
         M[i] = M[i].charCodeAt().toString(16);
         if (M[i] == '7e') {
@@ -40,17 +36,16 @@ function encrypt(M, keyGen) {
                 if (M[i].length != 2) {
                     M[i] = "0" + M[i];
                 }
-                // console.log(M[i]);
             } else {
                 var numb = parseInt(rand() * max) % 256;
                 if (numb < 126) {
                     numb += 130;
                 }
                 M[i] = numb.toString(16);
-                // console.log(M[i]);
             }
         }
     }
     M = M.join("").toString().toUpperCase();
+
     return M;
 }

@@ -24,8 +24,6 @@ document.getElementById('encrypt').addEventListener('click', function() {
         let Mlength = M.length;
         let keyGen = keyGeneration(Mlength, K);
         let C = encrypt(M, keyGen);
-        // console.log(keyGen);
-        // console.log(C);
         document.getElementById('message').value = C;
         document.querySelector('.copyButt').innerHTML = `<i class="fas fa-copy fs-3"></i>`;
 
@@ -35,6 +33,7 @@ document.getElementById('encrypt').addEventListener('click', function() {
     }
 })
 
+//decrypt
 document.getElementById('decrypt').addEventListener('click', function() {
     let C = document.getElementById('message').value;
     let K = document.getElementById('pass').value;
@@ -44,12 +43,9 @@ document.getElementById('decrypt').addEventListener('click', function() {
         document.getElementById('message').className = "form-control correct";
         let Mlength = C.length / 2;
         let pad = pad_bytes(C);
-        // console.log(pad)
         Mlength = Mlength - pad;
-        // console.log(Mlength)
         let keyGen = keyGeneration(Mlength, K);
         let M = decrypt(C, keyGen)
-            // console.log(M);
         document.getElementById('message').value = M;
         document.querySelector('.copyButt').innerHTML = ``
     } else if (C != "") {

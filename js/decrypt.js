@@ -1,4 +1,4 @@
-//calculate padding bytes
+//calculate padding characters
 function pad_bytes(C) {
     var pad = 0;
     C = C.match(/.{1,2}/g);
@@ -14,7 +14,7 @@ function pad_bytes(C) {
 //decrypt
 function decrypt(C, keyGen) {
     var pad = 0;
-    //character elimination
+    //pad characters elimination
     C = C.match(/.{1,2}/g);
     for (i = 0; i < C.length; i++) {
         var val = parseInt(C[i], 16);
@@ -23,30 +23,23 @@ function decrypt(C, keyGen) {
             pad += 1;
         }
     }
-    // console.log(pad);
 
     //ASCII Conversion
     for (i = 0; i < C.length; i++) {
         C[i] = String.fromCharCode(parseInt(C[i], 16));
     }
 
-    // console.log(C.join("").toString());
-
-    //Key-triggered rev. indexing
+    //Key-triggered rev. indexing- subkey2
     for (var i = 0; i < C.length; i++) {
         var t = keyGen.subkey2[i].charCodeAt();
         var j = t % C.length;
         [C[i], C[j]] = [C[j], C[i]];
     }
 
-    // console.log(C.join("").toString());
-
     //shrink length
     while (pad--) {
         C.pop();
     }
-    // console.log(C.join("").toString());
-
 
     //subkey1 operation
     for (var i = 0; i < C.length; i++) {
